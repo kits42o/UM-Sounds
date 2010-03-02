@@ -1,0 +1,21 @@
+<% title "Tracks" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Track</th>
+  </tr>
+  <% for track in @tracks %>
+    <tr>
+      <td><%=h track.name %></td>
+      <td><%=h track.description %></td>
+      <td><%= mp3_player track.track.url %></td>
+      <td><%= link_to "Show", track %></td>
+      <td><%= link_to "Edit", edit_track_path(track) %></td>
+      <td><%= link_to "Destroy", track, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Track", new_track_path %></p>

@@ -1,0 +1,29 @@
+<%= javascript_include_tag :ckeditor %>
+
+<% form_for @studio do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.cktext_area :description, :toolbar=>'Easy' %>
+  </p>
+  <p>
+	<%= f.label :isfeatured, "Featured Studio?"	%>
+	<%= f.check_box :isfeatured %>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

@@ -1,0 +1,13 @@
+<% title "Frequently Asked Questions" %>
+
+<div id="content">
+  <div id="faq">
+    <% @faqs.each do |faq| %>    
+      <div class="<%= cycle("faq_odd", "faq_even") %>">
+        <em><%= faq.question %></em>
+        <p><%= faq.answer %></p>
+      </div>
+    <% end  %>
+	<% %>
+  </div>
+</div>

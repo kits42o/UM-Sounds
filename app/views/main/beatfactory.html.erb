@@ -1,0 +1,42 @@
+<% title "Beat Factory" %>
+
+<% form_tag beatfactory_url, :method => 'get'  do %>
+	<p>
+		Search by Track Name: <%= text_field_tag :search, params[:search] %>
+		<%= submit_tag "Search", :name => nil %>
+	</p>
+<% end %>
+<% if !params[:search] %>
+	There is no search parameter
+<% end %>
+SEARCH RESULTS:<br>
+<% @tracks.each do |track| %>
+	Track name: <%=h track.name %><br>
+<% end %>
+<br><br>
+
+ALL:
+<div id="content">
+  <div id="beatfactory">
+    <% @producers.each_with_index do |producer, index| %>
+      <div class="<%= cycle("producer_even", "producer_odd") %>">
+        <strong><%= producer.username %></strong>
+        <!-- <%= image_tag(producer.photo.url(:thumbnail)) %> -->
+        <% producer.tracks.each do |track| %>
+          <div class="<%= cycle("beat_odd", "beat_even") %>" style="border: solid 1px black">
+            <strong><%= track.name %></strong>
+            <%= mp3_player track.track.url %>
+			<div id="ajaxy_track_desc_<%= index %>" style="display: none">
+            Track Length: 1 minute 30 seconds<br>
+			  <%= link_to image_tag('https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif'), :controller =>  'payments',  	 :action => 'checkout' %>
+			<em><%= track.description %></em>
+			
+			</div>
+			<%= link_to_function("More..", "Element.toggle('ajaxy_track_desc_" << index.to_s << "')") %>
+          </div>
+		  <br>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

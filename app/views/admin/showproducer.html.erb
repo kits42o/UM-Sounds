@@ -1,0 +1,67 @@
+<% title "Producer Profile" %>
+<%= image_tag(@producer	.photo.url(:thumbnail)) %>
+<table>
+<tr>
+<td>
+	<p>
+	  <strong>First Name:</strong>
+	  <%=h @producers.first_name %>
+	</p>
+	<p>
+	  <strong>Last Name:</strong>
+	  <%=h @producers.last_name %>
+	</p>
+	<p>
+	  <strong>City:</strong>
+	  <%=h @producers.city %>
+	</p>
+	<p>
+	  <strong>State:</strong>
+	  <%=h @producers.state %>
+	</p>
+	<p>
+	  <strong>Zip Code:</strong>
+	  <%=h @producers.zip_code %>
+	</p>
+	<p>
+	  <strong>Phone Number:</strong>
+	  <%=h @producers.phone_number %>
+	</p>
+	<p>
+	  <strong>Facebook:</strong>
+	  <%=h @producers.facebook %>
+	</p>
+	<p>
+	  <strong>Myspace:</strong>
+	  <%=h @producers.myspace %>
+	</p>
+	<p>
+	  <strong>Twitter:</strong>
+	  <%=h @producers.twitter %>
+	</p>
+	<p>
+	  <strong>Paypal:</strong>
+	  <%=h @producers.paypal %>
+	</p>
+
+	<p>
+	  <%= link_to "Edit", :controller => 'admin', :action => 'editproducer', :id => User.find(params[:id])  %> |
+	  <%= link_to "Back", welcome_url %>
+	</p>
+</td>
+<td valign=top>
+  <% if @producer.tracks.present? %>
+    <div id="welcome-tracks">
+      <h3><%= @producer.username %>'s tracks:</h3>
+      <% @producer.tracks.each do |track| %>
+        <div class="<%= cycle("track-dark", "track-light") %>">
+          <strong><%= track.name %></strong> <%= mp3_player track.track.url %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h3>You don't have any tracks uploaded.</h3>
+  <% end %>
+</td>
+</tr>
+</table>

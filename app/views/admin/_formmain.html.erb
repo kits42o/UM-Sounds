@@ -1,0 +1,44 @@
+<% form_for @producers, :url => { :controller => "admin", :action => "updateproducermain", :id => params[:id] } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </p>
+  <p>
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :zip_code %><br />
+    <%= f.text_field :zip_code %>
+  </p>
+  <p>
+    <%= f.label :phone_number %><br />
+    <%= f.text_field :phone_number %>
+  </p>
+  <p>
+    <%= f.label :facebook %><br />
+    <%= f.text_field :facebook %>
+  </p>
+  <p>
+    <%= f.label :myspace %><br />
+    <%= f.text_field :myspace %>
+  </p>
+  <p>
+    <%= f.label :twitter %><br />
+    <%= f.text_field :twitter %>
+  </p>
+  <p>
+    <%= f.label :paypal %><br />
+    <%= f.text_field :paypal %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

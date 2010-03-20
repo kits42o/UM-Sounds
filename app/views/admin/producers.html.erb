@@ -1,0 +1,21 @@
+<% title "Producers" %>
+
+Producers List
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Last Login IP</th>
+  </tr>
+<% @producers.each do |producer| %>
+    <tr>
+		<td><%=h producer.username %></td>
+		<td><%=h producer.email %></td>
+		<td><%=h producer.last_login_ip %></td>
+		<td><%= link_to "Edit Pic/password", :controller => 'admin', :action => 'editproducer', :id => producer.id %></td>
+		<td><%= link_to "Edit Profile", :controller => 'admin', :action => 'editproducermain', :id => producer.id %></td>
+		<td><%= link_to "Show", :controller => 'admin', :action => 'showproducer', :id => producer.id %></td>
+        <td><%= link_to "Destroy", producer, :confirm => 'Are you sure?', :method => :delete %></td>
+    
+    </tr>
+<% end %>

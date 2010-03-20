@@ -1,0 +1,9 @@
+<%= javascript_include_tag :ckeditor %>
+
+<% form_for @about do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.cktext_area :aboutums, :toolbar=>'Easy' %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

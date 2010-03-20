@@ -1,0 +1,23 @@
+one:
+  first_name: MyString
+  last_name: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  phone_number: MyString
+  facebook: MyString
+  myspace: MyString
+  twitter: MyString
+  paypal: MyString
+
+two:
+  first_name: MyString
+  last_name: MyString
+  city: MyString
+  state: MyString
+  zip_code: MyString
+  phone_number: MyString
+  facebook: MyString
+  myspace: MyString
+  twitter: MyString
+  paypal: MyString

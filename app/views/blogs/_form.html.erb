@@ -1,0 +1,18 @@
+<%= javascript_include_tag :ckeditor %>
+
+<% form_for @blog do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.cktext_area :body, :toolbar=>'Easy' %>
+  </p>
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_select :date %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

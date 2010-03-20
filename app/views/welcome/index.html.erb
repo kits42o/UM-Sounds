@@ -1,0 +1,31 @@
+<% title "Welcome #{@user.username}", false %>
+<div id="welcome-user-panel">
+  <div id="welcome-user">
+    <strong>Welcome <%= @user.username %>!</strong>
+    <br />
+    <%= image_tag(@user.photo.url(:thumbnail)) %>
+    <br />
+    <strong>Edit your:</strong>
+    <br />
+    <%= link_to "Account", edit_user_path(:current) %>
+    <br />
+    <%= link_to "Profile", edit_userprofile_path(:current) %>
+    <br />
+    <%= link_to "Tracks", tracks_path %>
+  </div>
+</div>
+
+<div id="welcome-user-content">
+  <% if @user.tracks.present? %>
+    <div id="welcome-tracks">
+      <h3><%= @user.username %>'s tracks:</h3>
+      <% @user.tracks.each do |track| %>
+        <div class="<%= cycle("track-dark", "track-light") %>">
+          <strong><%= track.name %></strong> <%= mp3_player track.track.url %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <h3>You don't have any tracks uploaded.</h3>
+  <% end %>
+</div>

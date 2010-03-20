@@ -1,0 +1,26 @@
+<% title "Tracks" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Artist</th>
+    <th>Track</th>
+  </tr>
+  <% @users.each do |user| %>
+    <% user.tracks.each do |track| %>
+      <tr>
+        <td><%=h track.name %></td>
+        <td><%=h track.description %></td>
+        <td><%=h user.username %></td>
+        <td><%= mp3_player track.track.url %></td>
+        <td><%= link_to "Show", track %></td>
+        <td><%= link_to "Edit", :controller => 'admin_tracks', :action => 'edit', :id => track.id %></td>
+        <td><%= link_to "Destroy", track, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+<p><%= link_to "Back", :controller => "admin" %></p>

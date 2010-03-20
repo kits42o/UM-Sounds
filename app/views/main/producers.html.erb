@@ -1,0 +1,21 @@
+<% title "Producers" %>
+
+<div id="content">
+  <div id="producers">
+    <% @producers.each do |producer| %>
+      <div class="<%= cycle("producer_odd", "producer_even") %>">
+        <div id="producer_info">
+          <%= image_tag(producer.photo.url(:thumbnail)) %>
+          <strong><%= producer.username %></strong>          
+        </div>
+        <div id="producer_tracks">
+          <% producer.tracks.each do |track| %>
+            <div class="<%= cycle("track_odd", "track_even") %>"
+              <%= mp3_player track.track.url %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

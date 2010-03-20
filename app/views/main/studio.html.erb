@@ -1,0 +1,13 @@
+<% title "Studios" %>
+
+<div id="content">
+  <div id="studios">
+    <% @studios.each do |studio| %>    
+      <div class="<%= cycle("studio_odd", "studio_even") %>">
+        <strong><%= studio.name %></strong>
+        <em><%= studio.city %>, <%= studio.state %></em>
+        <p><%= studio.description %></p>
+      </div>
+    <% end  %>
+  </div>
+</div>

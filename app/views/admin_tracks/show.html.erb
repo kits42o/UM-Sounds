@@ -1,0 +1,20 @@
+<% title "Track - #{@track.name}" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @track.name %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @track.description %>
+</p>
+<p>
+  <strong>Track:</strong>
+  <%= mp3_player @track.track.url %>
+</p>
+<p>
+  <%= link_to "Edit", edit_track_path(@track) %> |
+  <%= link_to "Destroy", @track, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", tracks_path %> |
+  <%= link_to "Add Another Track", new_track_path %>
+</p>

@@ -1,0 +1,11 @@
+one:
+  support_email: MyString
+  um_staff_email: MyString
+  um_paypal: MyString
+  sales_percent: MyString
+
+two:
+  support_email: MyString
+  um_staff_email: MyString
+  um_paypal: MyString
+  sales_percent: MyString

@@ -1,0 +1,47 @@
+<% title "Your User Profile" %>
+
+<p>
+  <strong>First Name:</strong>
+  <%=h @userprofile.first_name %>
+</p>
+<p>
+  <strong>Last Name:</strong>
+  <%=h @userprofile.last_name %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%=h @userprofile.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%=h @userprofile.state %>
+</p>
+<p>
+  <strong>Zip Code:</strong>
+  <%=h @userprofile.zip_code %>
+</p>
+<p>
+  <strong>Phone Number:</strong>
+  <%=h @userprofile.phone_number %>
+</p>
+<p>
+  <strong>Facebook:</strong>
+  <%=h @userprofile.facebook %>
+</p>
+<p>
+  <strong>Myspace:</strong>
+  <%=h @userprofile.myspace %>
+</p>
+<p>
+  <strong>Twitter:</strong>
+  <%=h @userprofile.twitter %>
+</p>
+<p>
+  <strong>Paypal:</strong>
+  <%=h @userprofile.paypal %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_userprofile_path(@userprofile) %> |
+  <%= link_to "Back", welcome_url %>
+</p>

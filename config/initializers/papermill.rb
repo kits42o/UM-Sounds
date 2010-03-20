@@ -6,7 +6,7 @@ module Papermill
   # All options here already are defaults.
     
   unless defined?(OPTIONS)
-  
+    Paperclip.options[:image_magick_path] = "C:/imagemagick"
     OPTIONS = {
       
       
@@ -16,7 +16,6 @@ module Papermill
       
       # Associated PapermillAsset subclass (must be an STI subclass of PapermillAsset)
       # :class_name => "PapermillAsset",
-      
       
       
       

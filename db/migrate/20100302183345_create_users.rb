@@ -10,16 +10,7 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :last_login_at
       t.string :current_login_ip
       t.string :last_login_ip
-      t.string :firstname
-      t.string :lastname
-      t.string :city
-      t.string :state
-      t.string :zip
-      t.string :phone
-      t.string :facebook
-      t.string :twitter
-      t.string :myspace
-      t.string :paypal
+      t.boolean :is_admin, :default => 0
       t.integer :profile_views
       t.boolean :is_featured
       t.timestamps

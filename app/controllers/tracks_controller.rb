@@ -1,42 +1,43 @@
 class TracksController < ApplicationController
   def index
-    @tracks = Track.all
+    @tracks = current_user.tracks
   end
   
   def show
-    @track = Track.find(params[:id])
+    @track = current_user.tracks.find(params[:id])
   end
   
   def new
-    @track = Track.new
+    @track = current_user.tracks.new
   end
   
   def create
-    @track = Track.new(params[:track])
+    @track = current_user.tracks.new(params[:track])
     if @track.save
       flash[:notice] = "Successfully added track."
       redirect_to @track
     else
-      render :action => 'new'
+      render :new
     end
   end
   
   def edit
-    @track = Track.find(params[:id])
+    @track = current_user.tracks.find(params[:id])
   end
   
   def update
-    @track = Track.find(params[:id])
+    @track = current_user.tracks.find(params[:id])
     if @track.update_attributes(params[:track])
       flash[:notice] = "Successfully updated track."
+      
       redirect_to @track
     else
-      render :action => 'edit'
+      render :edit
     end
   end
   
   def destroy
-    @track = Track.find(params[:id])
+    @track = current_user.tracks.find(params[:id])
     @track.destroy
     flash[:notice] = "Successfully destroyed track."
     redirect_to tracks_url

@@ -9,7 +9,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100302203544) do
+ActiveRecord::Schema.define(:version => 20100318101943) do
+
+  create_table "abouts", :force => true do |t|
+    t.text     "aboutums"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "admin_tracks", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "admins", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.date     "date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "faqs", :force => true do |t|
+    t.string   "question"
+    t.string   "answer"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "papermill_assets", :force => true do |t|
     t.string   "file_file_name"
@@ -31,32 +62,27 @@ ActiveRecord::Schema.define(:version => 20100302203544) do
   add_index "papermill_assets", ["assetable_id", "assetable_type", "assetable_key", "position"], :name => "papermill_index"
   add_index "papermill_assets", ["assetable_key", "position"], :name => "index_papermill_assets_on_assetable_key_and_position"
 
-  create_table "producers", :force => true do |t|
-    t.string   "username",           :null => false
-    t.string   "email",              :null => false
-    t.string   "crypted_password",   :null => false
-    t.string   "password_salt",      :null => false
-    t.string   "persistence_token",  :null => false
-    t.string   "current_login_at"
-    t.string   "last_login_at"
-    t.string   "current_login_ip"
-    t.string   "last_login_ip"
-    t.string   "first_name",         :null => false
-    t.string   "last_name",          :null => false
-    t.string   "city",               :null => false
-    t.string   "state",              :null => false
-    t.integer  "zip",                :null => false
-    t.string   "phone"
-    t.string   "genre",              :null => false
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "myspace"
+  create_table "sitesettings", :force => true do |t|
+    t.string   "support_email"
+    t.string   "um_staff_email"
+    t.string   "um_paypal"
+    t.string   "sales_percent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "studios", :force => true do |t|
+    t.string   "name"
+    t.string   "city"
+    t.string   "state"
+    t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.boolean  "isfeatured"
   end
 
   create_table "tracks", :force => true do |t|
@@ -68,6 +94,24 @@ ActiveRecord::Schema.define(:version => 20100302203544) do
     t.string   "track_content_type"
     t.integer  "track_file_size"
     t.datetime "track_updated_at"
+    t.integer  "user_id"
+    t.integer  "price"
+  end
+
+  create_table "userprofiles", :force => true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "phone_number"
+    t.string   "facebook"
+    t.string   "myspace"
+    t.string   "twitter"
+    t.string   "paypal"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
@@ -80,16 +124,7 @@ ActiveRecord::Schema.define(:version => 20100302203544) do
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.string   "firstname"
-    t.string   "lastname"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "phone"
-    t.string   "facebook"
-    t.string   "twitter"
-    t.string   "myspace"
-    t.string   "paypal"
+    t.boolean  "is_admin",           :default => false
     t.integer  "profile_views"
     t.boolean  "is_featured"
     t.datetime "created_at"

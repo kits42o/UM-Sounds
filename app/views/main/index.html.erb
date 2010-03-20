@@ -1,2 +1,17 @@
-<h1>Welcome to UMSounds.</h1>
-<p>Find me in app/views/main/index.html.erb</p>
+<% title "Welcome", false %>
+
+<div id="content">
+  <h1>
+    Welcome to UMSounds.
+    <br />
+    Where music happens...
+  </h1>
+  <div id="news">
+    <% @blogs.each do |blog| %>
+      <div class="<%= cycle("news_odd, news_even") %>">
+        <strong><%= blog.title %></strong> - <em><%= blog.date.to_s %></em>
+        <p><%= blog.body %></p>
+      </div>
+    <% end %>
+  </div>
+</div>

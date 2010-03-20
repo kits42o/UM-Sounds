@@ -13,7 +13,12 @@
   <%= mp3_player @track.track.url %>
 </p>
 <p>
+  <strong>Price:</strong>
+  <%=h @track.price %>
+</p>
+<p>
   <%= link_to "Edit", edit_track_path(@track) %> |
   <%= link_to "Destroy", @track, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", tracks_path %>
+  <%= link_to "View All", tracks_path %> |
+  <%= link_to "Add Another Track", new_track_path %>
 </p>

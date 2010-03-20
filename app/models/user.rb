@@ -1,21 +1,17 @@
 class User < ActiveRecord::Base
-  attr_accessible :username, :email, :photo, :password, :password_confirmation, :firstname, :lastname, :city, :state, :zip, :phone, :facebook, :twitter, :myspace, :paypal
+  attr_accessible :username, :email, :photo, :password, :password_confirmation
   
   # Authlogic
   acts_as_authentic
 
   # Validation Stuff
+  validates_uniqueness_of :email, :on => :create, :message => "is already in use, please choose another email."
+  validates_uniqueness_of :username, :on => :create, :message => "is already in use, please choose another username."
+  validates_presence_of :username, :on => :create, :message => "can't be blank"
   validates_presence_of :email, :on => :create, :message => "can't be blank"
-  validates_presence_of :firstname, :on => :create, :message => "can't be blank"
-  validates_presence_of :lastname, :on => :create, :message => "can't be blank"
-  validates_presence_of :city, :on => :create, :message => "can't be blank"
-  validates_presence_of :state, :on => :create, :message => "can't be blank"
-  validates_presence_of :zip, :on => :create, :message => "code can't be blank"
-  validates_presence_of :phone, :on => :create, :message => "number can't be blank"
-  validates_presence_of :paypal, :on => :create, :message => "address can't be blank"
   
   # Paperclip Stuff
-  has_attached_file :photo, :styles => { :thumbnail => "100x100>",
+  has_attached_file :photo, :styles => { :thumbnail => "150x150>",
                                          :medium => "300x300>",
                                          :large  => "500x500>" },
                     :url  => "/assets/producers/:id/:style/:basename.:extension",
@@ -26,5 +22,6 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/pjpeg', 'image/jpg', 'image/png', 'image/gif']
   
   # Associations
-  has_many :tracks, :class_name => "track", :foreign_key => "reference_id"
+  has_many :tracks, :dependent => :destroy
+  has_one :userprofile, :dependent => :destroy
 end

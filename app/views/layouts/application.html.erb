@@ -11,10 +11,20 @@
     <div id="container">
       <div id="user_nav">
         <% if current_user %>
-          <%= link_to "Edit Profile", edit_user_path(:current) %> |
+          <%= link_to "Home", welcome_url %> 
+        <% else %>
+          <%= link_to "Home", root_url %>
+        <% end %>
+        <%= link_to "Beat Factory", beatfactory_url %>
+        <%= link_to "Producers", producers_url %>
+        <%= link_to "Studios", studio_url %>
+        <%= link_to "FAQ", ourfaqs_url %>
+        <%= link_to "About us", aboutus_url %>
+        |
+        <% if current_user %>
           <%= link_to "Logout", logout_path %>
         <% else %>
-          <%= link_to "Register", new_user_path %> |
+          <%= link_to "Register", new_user_path %>
           <%= link_to "Login", login_path %>
         <% end %>
       </div>

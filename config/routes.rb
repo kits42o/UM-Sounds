@@ -1,14 +1,29 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :faqs
+
+  map.resources :abouts
+
+  map.resources :sitesettings
+  map.resources :admin_tracks
+  map.resources :admin_studios
+  map.resources :studios
+  map.resources :blogs
+  map.resources :userprofiles
   map.resources :tracks
-
   map.resources :user_sessions
-
   map.resources :users
+  map.resources :main
 
   map.root :controller => 'main'
-  map.login "login",   :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  map.signup "signup", :controller => "users",         :action => "new"
+  map.aboutus "aboutus",         :controller => "main",          :action => "about"
+  map.ourfaqs "ourfaqs",         :controller => "main",          :action => "faq"
+  map.beatfactory "beatfactory", :controller => "main",          :action => "beatfactory"
+  map.producers "producers",     :controller => "main",          :action => "producers"
+  map.studio "localstudios",     :controller => "main",          :action => "studio"
+  map.login "login",             :controller => "user_sessions", :action => "new"
+  map.logout "logout",           :controller => "user_sessions", :action => "destroy"
+  map.signup "signup",           :controller => "users",         :action => "new"
+  map.welcome "welcome",         :controller => "welcome"
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:

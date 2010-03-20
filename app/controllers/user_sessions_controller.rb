@@ -7,9 +7,9 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       notice "Successfully logged in!"
-      redirect_to root_url
+      redirect_to welcome_url
     else
-      render :action => 'new'
+      render :new
     end
   end
   

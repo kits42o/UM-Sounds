@@ -7,9 +7,9 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       notice "Registration successful!"
-      redirect_to root_url
+      redirect_to new_userprofile_path
     else
-      render :action => 'new'
+      render :new
     end
   end
   
@@ -21,9 +21,9 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update_attributes(params[:user])
       notice "Successfully updated profile."
-      redirect_to root_url
+      redirect_to welcome_url
     else
-      render :action => 'edit'
+      render :edit
     end
   end
   
